@@ -1,0 +1,416 @@
+/* font-family: 'Poppins', sans-serif; */
+/* font-family: 'Roboto Condensed', sans-serif; */
+
+html{
+  outline: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  outline: none;
+  background-color: #E9F0F8;
+  /* font-family: ; */
+  /* font-family: "Courier New", Courier, monospace; */
+}
+button {
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.f-siteName {
+  font-family: "Roboto Condensed", sans-serif;
+  font-style: italic;
+  font-weight: bold;
+  color: #fbfbfc;
+}
+.f-title {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #fbfbfc;
+}
+.f-article {
+  font-family: "Poppins", sans-serif;
+}
+.icons {
+  vertical-align: middle;
+}
+
+/* ***************************
+*
+*  Navigation
+*
+***************************************/
+
+.navWrapper {
+  width: 100%;
+  background-color: #072c40;
+  line-height: 40px;
+}
+
+.siteNameContainer {
+  display: inline-block;
+  margin-right: auto;
+  width: 20%;
+}
+.siteName {
+  font-size: 22px;
+  margin-left: 25px;
+  /* display: inline-block; */
+}
+.navMenuContainer {
+  width: 70%;
+  display: inline-block;
+  text-align: right;
+  float: right;
+  margin-right: 30px;
+}
+.toggleNavMenu{
+  transform: translateX(0) !important;
+}
+.navMenuContainer a {
+  color: #fbfbfc;
+  /* font-weight: 600; */
+  font-size: 17px;
+  padding: 5px 10px;
+}
+.dropdown {
+  display: inline-block;
+  cursor: pointer;
+}
+.dropdownBtn {
+  background: none;
+  border: none;
+  color: #fbfbfc;
+  font-size: 17px;
+  cursor: pointer;
+  /* background-color: red; */
+}
+.dropdownBtn span {
+  /* vertical-align: middle; */
+  font-size: 16px;
+  padding-right: 2px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 99;
+  background-color: #072c40;
+
+  /* border: 1px solid red; */
+}
+.dropdown-content a {
+  line-height: 30px;
+  display: block;
+  width: 150px;
+  padding: 1px 10px;
+  text-align: left;
+  background-color: #072c40;
+}
+.dropdown-items {
+  position: relative;
+  /* transform: translateX() */
+  right: 80px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.navMenuContainer a:hover,
+.dropdown:hover .dropdownBtn {
+  /* background-color: rgb(180, 180, 185); */
+  color: #f89122;
+}
+.hamburgerMenu {
+  display: none;
+}
+
+/* ****************************
+**
+**  ******* Hero Header ******
+**
+****************************** */
+.heroWrapper {
+  width: 100%;
+}
+.heroContainer {
+  outline: none;
+  background: linear-gradient(
+    /* 100deg, */ rgba(108, 176, 233, 0.308),
+    rgba(233, 231, 110, 0.144)
+  );
+  position: relative;
+}
+.heroContainer img {
+  outline: none;
+  position: relative;
+  z-index: -1;
+  width: 100%;
+  height: 800px;
+}
+.heroTextContainer {
+  position: absolute;
+  top: 27%;
+  right: 3%;
+  text-align: right;
+  z-index: 0;
+}
+.heroTextContainer::after {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 200px;
+  background-color: rgba(35, 35, 88, 0.103);
+  border-top-left-radius: 60%;
+  border-bottom-right-radius: 100%;
+}
+/* .heroText {
+  position: relative;
+  top: 0;
+} */
+.heroTitle {
+  font-size: 38px;
+  margin: 10px;
+}
+.heroBtn {
+  background-color: #f89122;
+  padding: 15px 25px;
+  border-radius: 10px;
+  border: none;
+  color: #fbfbfc;
+  font-size: 22px;
+  transition: 0.5s;
+}
+.heroBtn:hover {
+  background-color: #fbfbfc;
+  /* color: #f89122; */
+  color: #27343B;
+}
+
+@media screen and (max-width: 626px) {
+  .navMenuContainer {
+    transform: translateX(-120vw);
+    position: absolute;
+    transition: 0.5s;
+    z-index: 99;
+    /* display: inline-block; */
+    /* text-align: center; */
+    top: 40px;
+    outline: none;
+    border-top: 2px solid #f89122;
+    left: 0;
+    padding-top: 100px;
+    /* vertical-align: middle; */
+    background-color: #072c40;
+    width: 100%;
+    height: 100vh;
+    /* float: left; */
+  }
+  .navMenuContainer a {
+    display: block;
+    width: 100%;
+    /* background-color: #072c40; */
+    text-align: center;
+    padding: 0;
+    border-bottom: 2px solid aliceblue;
+  }
+  .dropdown {
+    display: block;
+  }
+  .dropdownBtn {
+    display: none;
+  }
+  .dropdown-content {
+    position: static;
+    display: block;
+    /* left: 150; */
+  }
+  .dropdown-items {
+    right: 0;
+  }
+  .dropdown-items a {
+    line-height: 40px;
+  }
+
+  .hamburgerMenu {
+    display: inline-block;
+    color: #fbfbfc;
+    float: right;
+    margin-right: 30px;
+  }
+  .hamburgerMenu span {
+    /* vertical-align: middle; */
+    font-size: 30px;
+  }
+  /* .hamburgerMenu:hover + .navMenuContainer {
+    display: block;
+  } */
+
+  /* ****************************
+**
+**  ******* Hero Header ******
+**
+****************************** */
+  .heroContainer {
+  }
+  .heroContainer img {
+    width: 100%;
+    height: 450px;
+  }
+}
+
+/* *****************************
+*
+*
+*     max-425px ends
+*
+*
+***************************** */
+@media screen and (min-width: 426px) {
+  .heroContainer img {
+    height: 500px;
+  }
+}
+
+/* *****************************
+*
+*
+*     min-425px ends
+*
+*
+***************************** */
+@media screen and (min-width: 768px) {
+  .heroContainer img {
+    height: 800px;
+  }
+}
+
+/* ********************
+*
+*
+**    Appointment Form 
+* 
+*
+************************ */
+
+.formWrapper{
+  /* position: relative; */
+  width: 100%;
+  margin-top: 60px;
+  color: #31456A;
+  text-align: center;
+  
+}
+.formHeader{
+  position: relative;
+  margin-bottom: 40px;
+  /* background-color: #f89122; */
+}
+.formHeader h1 {
+  /* background-color: green; */
+}
+.formHeader h1 sup{
+  font-size: 15px;
+  margin-left: -6px;
+  /* line-height: 40px; */
+  /* background-color: red; */
+}
+ 
+.formHeader h1::after{
+  content: "";
+  position: absolute;
+  bottom: -45%;
+  margin-left: -160px;
+  /* left: 47%; */
+  /* transform: translateX(-150px); */
+  width: 100px;
+  height: 3px;
+  /* border-bottom: 3px dotted #31456A; */
+  border-bottom: 3px double #f89122;;
+  /* background-color: #31456A; */
+}
+.formContainer{
+  width: 90%;
+  margin: 0 auto;
+  /* background-color: aquamarine; */
+  /* text-align: center; */
+}
+.appoinment-input{
+  display: inline-block;
+  width: 45%;
+  text-align: center;
+  margin: 10px;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+  background-color: #E9F0F8;
+  font-size: 16px;
+  color: #35496da4;
+  font-weight: 600;
+
+  box-shadow: -3px -3px 3px rgb(254, 255, 255) inset, 3px 3px 3px rgba(134, 152, 255, 0.384) inset;
+  /* background-color: brown; */
+}
+.appoinment-input::placeholder {
+  color: #35496da4;
+  /* font-size: 16px; */
+  /* font-size: 1.5em; */
+}
+.appointment-label{
+  display: inline-block;
+  width: 25%;
+  margin: 10px;
+  /* background-color: seagreen; */
+}
+.dateBox{
+  width: 65%;
+}
+.submitBtn{
+  font-family: 'Poppins', sans-serif; 
+/* font-family: 'Roboto Condensed', sans-serif; */
+  display: block;
+  height: 45px;
+  width: 120px;
+  margin: 20px auto;
+  /* color: #31456A; */
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  box-shadow: -3px -3px 3px #ffffff, 2px 2px 2px #454e6d81;
+  background-color: #f89122;
+  transition: 0.5s;
+}
+/* select option{
+  background-color: #DBE5F0;
+} */
+.submitBtn:hover{
+  background-color: #E3EDF7;
+  color: #35496da4;
+}
+
+@media screen and (max-width: 768px) {
+  .formContainer{
+    width: 100%;
+    }
+}
+@media screen and (max-width: 650px) {
+  .formContainer{
+    width: 100%;
+    }
+    .appoinment-input{
+      display: block;
+      width: 90%;
+      margin: 20px auto;
+    }
+    .appointment-label{
+      display: block;
+      width: 90%;
+      text-align: left;
+      margin: -25px 0 0 35px;
+    }
+}
