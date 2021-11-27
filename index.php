@@ -16,12 +16,13 @@
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons"
       rel="stylesheet">
 
-	<title>Fix My Wheel</title>
+	<title>Fix The Wheel</title>
 </head>
 <body>
 	<?php include("includes/nav.php");?>
 	<?php include("includes/hero-header.php");?>
 	<?php include("includes/booking-form.php");?>
+	<?php include("includes/mechanic-list.php");?>
 
 
 	<script>

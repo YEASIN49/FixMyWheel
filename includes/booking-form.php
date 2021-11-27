@@ -1,6 +1,6 @@
-<section class="formWrapper f-article">
-	<div class="formHeader">
-		<h1>Book A Mechanic <sup class="material-icons">
+<section class="sectionWrapper f-article">
+	<div class="sectionHeader">
+		<h1>BOOK A MECHANIC <sup class="material-icons">
 handyman
 </sup></h1>
 	</div>
