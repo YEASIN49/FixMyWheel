@@ -1,7 +1,7 @@
 <nav class="navWrapper">
 	<div class="navContainer">
 		<div class="siteNameContainer">
-			<a href="#" class="siteName f-siteName">FixTheWheel</a>
+			<a href="./" class="siteName f-siteName">FixTheWheel</a>
 		</div>
 		
 

@@ -565,17 +565,24 @@ p{
 **
 *
 ******************* */
-.appointment-container{
+.appointment-list-container{
   /* background-color: red; */
+  /* padding: 5px; */
+  overflow-x: scroll;
+  padding: 5px;
+ 
 }
+
 table{
   width: 80%;
+  min-width: 1024px;
   margin: 0 auto;
   border-collapse: collapse;
   /* background-color: green; */
 }
 .table-header{
   line-height: 40px;
+  padding: 5px;
   /* border: 1px solid red; */
   box-shadow: -3px -3px 3px rgb(254, 255, 255) , 3px 3px 3px rgba(134, 152, 255, 0.384) ;
 }
@@ -592,6 +599,14 @@ tbody td{
   /* background-color: #27343B; */
   
 }
+.table-mechanic{
+  width: 160px;
+  /* background-color: #072c40; */
+}
+.table-date{
+  width: 100px;
+  /* background-color: #f89122; */
+}
 .update-cell{
   position: relative;
   /* background-color: #E9F0F8; */
@@ -605,7 +620,9 @@ tbody td{
   margin: 0;
 }
 .updateBtn{
+  display: inline-block;
   margin: 0 auto;
+  /* margin-left: -5px; */
   /* padding: 5px; */
   height: 35px;
   width: 65px;
@@ -624,9 +641,16 @@ tbody td{
   display: block;
 }
 .update-field{
+  width: 130px;
   border: 1px solid #072c40 ; 
   color: #072c40d8;
   padding: 10px 5px;
   border-radius: 10px;
   margin-bottom: 5px;
+  /* margin-left: -15px; */
+}
+@media screen and (max-width: 1200px) {
+  table{
+    width: 90%;
+  }
 }

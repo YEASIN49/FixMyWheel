@@ -8,7 +8,7 @@
 	// $email =$_SESSION["email"];
 	// $employer_id = $_SESSION["id"];
 	// $roletype = $_SESSION["role"];
-	$fetch_mechanic = "SELECT `id`, `name`, `car_booked` FROM `mechanics`";
+	$fetch_mechanic = "SELECT `mechanic_id`, `mechanic_name`, `car_booked` FROM `mechanics`";
 
 	$mechanicsData=$conn->query($fetch_mechanic) or die('<script>alert("Mechanics Data Fetching failed!");</script>');
 
@@ -108,9 +108,9 @@ handyman
 			<select class="appoinment-input" name="mechanic" placeholder="Select a mechanic">
 				<?php foreach ($mechanicsData as $row) {  ?>
 					
-					<option value="<?php echo ($row['id']." ". $row['car_booked']);?>">
-						<span><?php echo $row['name'];?></span>
-						<span>*ID-<?php echo $row['id'];?></span>
+					<option value="<?php echo ($row['mechanic_id']." ". $row['car_booked']);?>">
+						<span><?php echo $row['mechanic_name'];?></span>
+						<span>*ID-<?php echo $row['mechanic_id'];?></span>
 						<?php  if($row['car_booked'] < 4){ ?>
 							<span class="mechanic-status available"> 
 							<?php 
