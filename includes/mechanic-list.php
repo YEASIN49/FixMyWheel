@@ -8,7 +8,7 @@
 	// $email =$_SESSION["email"];
 	// $employer_id = $_SESSION["id"];
 	// $roletype = $_SESSION["role"];
-	$fetch_mechanic = "SELECT `id`, `name`, `car_fixed`, `experience`, `status` FROM `mechanics`";
+	$fetch_mechanic = "SELECT `id`, `name`, `car_fixed`, `experience`, `car_booked` FROM `mechanics`";
 
 	$allMechanics=$conn->query($fetch_mechanic) or die('<script>alert("Mechanic List Fetching failed!");</script>');
 	// echo ($allMechanics);
@@ -52,9 +52,10 @@
 					<p>ID : <?php echo $row['id']; ?></p>
 					<p>Car Fixed : <?php echo $row['car_fixed']; ?></p>
 					<p>Experience : <?php echo $row['experience']; ?> year(s)</p>
+					<p>Remaining Car Slot : <strong> <?php echo 4 - $row['car_booked']; ?></strong></p>
 					<p >Status : 
 						<!-- PHP BELOW -->
-						<?php if($row['status']){ ?>
+						<?php if($row['car_booked'] < 4){ ?>
 						<span class="mechanic-status available"> 
 							<?php 
 								echo "available"; 

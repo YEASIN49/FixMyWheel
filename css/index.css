@@ -1,6 +1,8 @@
 /* font-family: 'Poppins', sans-serif; */
 /* font-family: 'Roboto Condensed', sans-serif; */
-
+*{
+  scroll-behavior: smooth;
+}
 html{
   outline: none;
 }
@@ -185,6 +187,7 @@ p{
   margin: 10px;
 }
 .heroBtn {
+  display: inline-block;
   background-color: #f89122;
   padding: 15px 25px;
   border-radius: 10px;
@@ -192,6 +195,7 @@ p{
   color: #fbfbfc;
   font-size: 22px;
   transition: 0.5s;
+  /* margin-top: 65px; */
 }
 .heroBtn:hover {
   background-color: #fbfbfc;
@@ -333,7 +337,7 @@ p{
   content: "";
   position: absolute;
   bottom: -45%;
-  margin-left: -170px;
+  margin-left: -165px;
   /* left: 47%; */
   /* transform: translateX(-150px); */
   width: 100px;
@@ -550,4 +554,79 @@ p{
   .mechanic-card{
     flex-basis: 25%;
   }
+}
+
+/* ******************
+*
+*
+* 
+*     Admin Styles
+*
+**
+*
+******************* */
+.appointment-container{
+  /* background-color: red; */
+}
+table{
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  /* background-color: green; */
+}
+.table-header{
+  line-height: 40px;
+  /* border: 1px solid red; */
+  box-shadow: -3px -3px 3px rgb(254, 255, 255) , 3px 3px 3px rgba(134, 152, 255, 0.384) ;
+}
+tbody{
+  box-shadow: -3px -3px 3px rgb(254, 255, 255) inset, 3px 3px 3px rgba(134, 152, 255, 0.384) inset;  
+}
+tbody td{
+  /* padding-bottom: 35px; */
+  line-height: 90px;
+  text-align: center;
+  border-bottom: 1px solid #27343b41;
+  border-collapse: collapse;
+  /* vertical-align: sub; */
+  /* background-color: #27343B; */
+  
+}
+.update-cell{
+  position: relative;
+  /* background-color: #E9F0F8; */
+}
+.edit-form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #E9F0F8;
+  margin: 0;
+}
+.updateBtn{
+  margin: 0 auto;
+  /* padding: 5px; */
+  height: 35px;
+  width: 65px;
+}
+.input-toggler{
+  position: absolute;
+  /* top: 0; */
+  height: 25px;
+  left: 35%;
+  bottom: 5%;
+}
+.display-hidden{
+  display: none;
+}
+.display-block{
+  display: block;
+}
+.update-field{
+  border: 1px solid #072c40 ; 
+  color: #072c40d8;
+  padding: 10px 5px;
+  border-radius: 10px;
+  margin-bottom: 5px;
 }

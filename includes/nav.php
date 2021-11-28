@@ -10,7 +10,7 @@
 		</div>
 
 		<div id="nav-toggler" class="navMenuContainer f-title">
-			<a href="">Appoinment</a>
+			<a href="#section-bookingForm">Appoinment</a>
 			<div class="dropdown ">
 				<button class="dropdownBtn f-title"><span class="material-icons icons">login</span>Log In
 				</button>
