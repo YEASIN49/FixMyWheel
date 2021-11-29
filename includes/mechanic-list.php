@@ -1,33 +1,11 @@
 <?php
-// session_start();
-	// include("includes/config.php");
 
 	$allMechanics;
 
-	// global $conn;
-	// $email =$_SESSION["email"];
-	// $employer_id = $_SESSION["id"];
-	// $roletype = $_SESSION["role"];
 	$fetch_mechanic = "SELECT `mechanic_id`, `mechanic_name`, `car_fixed`, `experience`, `car_booked` FROM `mechanics`";
 
 	$allMechanics=$conn->query($fetch_mechanic) or die('<script>alert("Mechanic List Fetching failed!");</script>');
-	// echo ($allMechanics);
-	// print_r($allMechanics);
-	// while ($row= $allMechanics->fetch_assoc()) { // print object
-    // 	echo $row['name'];
-	// }
-	// foreach ($allMechanics as $row) { // print object
-	// 	echo $row['name'];
-	// }
 
-	
-
-	// if (!empty($allMechanics)){
-	// 	// echo ('("All job fetched")');
-	
-	// }else{
-	// 	echo '("List Fetch Failed")';
-	// }
 ?>
 
 
@@ -73,57 +51,5 @@
 
 	<?php }	?>
 		
-		<!-- <div class="mechanic-card">
-			<div class="mechanic-card-content">
-				<img src="./images/img-v-47.jpg" height="120px" width="120px" alt="">
-				<p class="card-text-divider"></p>
-				<div class="mechanic-info">
-					<h4 class="mechanic-title">Name Here</h4>
-					<p>ID Here</p>
-					<p>Car Fixed : xxxx</p>
-					<p>Experience : xxxx</p>
-					<p >Status : <span class="mechanic-status booked"> booked</span></p>
-				</div>
-			</div>
-		</div>
-		<div class="mechanic-card">
-			<div class="mechanic-card-content">
-				<img src="./images/img-v-47.jpg" height="120px" width="120px" alt="">
-				<p class="card-text-divider"></p>
-				<div class="mechanic-info">
-					<h4 class="mechanic-title">Name Here</h4>
-					<p>ID Here</p>
-					<p>Car Fixed : xxxx</p>
-					<p>Experience : xxxx</p>
-					<p >Status : <span class="mechanic-status available"> available</span></p>
-				</div>
-			</div>
-		</div>
-		<div class="mechanic-card">
-			<div class="mechanic-card-content">
-				<img src="./images/img-v-47.jpg" height="120px" width="120px" alt="">
-				<p class="card-text-divider"></p>
-				<div class="mechanic-info">
-					<h4 class="mechanic-title">Name Here</h4>
-					<p>ID Here</p>
-					<p>Car Fixed : xxxx</p>
-					<p>Experience : xxxx</p>
-					<p >Status : <span class="mechanic-status available"> available</span></p>
-				</div>
-			</div>
-		</div>
-		<div class="mechanic-card">
-			<div class="mechanic-card-content">
-				<img src="./images/img-v-47.jpg" height="120px" width="120px" alt="">
-				<p class="card-text-divider"></p>
-				<div class="mechanic-info">
-					<h4 class="mechanic-title">Name Here</h4>
-					<p>ID Here</p>
-					<p>Car Fixed : xxxx</p>
-					<p>Experience : xxxx</p>
-					<p >Status : <span class="mechanic-status booked"> booked</span></p>
-				</div>
-			</div>
-		</div> -->
 	</div>
 </section>

@@ -1,13 +1,7 @@
 <?php 
-// include("includes/config.php");
-
 
 	$mechanicsData;
 
-	// global $conn;
-	// $email =$_SESSION["email"];
-	// $employer_id = $_SESSION["id"];
-	// $roletype = $_SESSION["role"];
 	$fetch_mechanic = "SELECT `mechanic_id`, `mechanic_name`, `car_booked` FROM `mechanics`";
 
 	$mechanicsData=$conn->query($fetch_mechanic) or die('<script>alert("Mechanics Data Fetching failed!");</script>');
@@ -28,24 +22,14 @@ if(isset($_POST['book'])){
 	$mechanic_id = $form_mechanicID_slot_array[0];
 	$appintment_date = $_POST['appintment-date'];
 	$current_slot = $form_mechanicID_slot_array[1];
-	// $user_id = '555';
-	// echo $mechanic_id;
-	// echo "test";
-	// echo $current_slot;
 	
 	
 	function insertQuery($sqlQuery){
 		global $conn;
-		// global $roletype;
-		// $conn->query($sqlQuery) or die('<script>alert("Something Wrong! Appointment failed!");</script>');
+		
 		$result=$conn->query($sqlQuery);
 		if ($result) {
 			echo '<script>alert("Appointment Successfull")</script>';
-			// echo '<script>location.replace("postedJob.php")</script>';
-			// sleep(2);
-			// header("location:appliedJob.php"); 
-			// die('');
-			// exit();
 		}else{
 			echo '<script>alert("Appointment Failed")</script>';
 		}
@@ -94,9 +78,6 @@ if(isset($_POST['book'])){
 			echo '<script>alert("Appointment already scheduled")</script>';
 		}
 
-		// echo "<script>alert(".$current_slot.")</script>";
-		// $appoinement_query = "INSERT INTO `appointments`(`name`, `address`, `phone`, `license_no`, `engine_no`, `mechanic_id`, `appointment_date`) VALUES ('$name','$address','$phone','$license','$engine', '$mechanic_id', '$appintment_date')"; 
-		// insertQuery($appoinement_query);
 	}
 	else{
 		echo '<script>alert("Pleae select another mechanic. Currently selected mechanic is not available for service!")</script>';
@@ -142,16 +123,7 @@ handyman
 					
 				<?php } ?>	
 
-				<!-- <option value="001"><span>Mechanic A</span><span>ID-xxx</span><span>status</span></option>
-				<option value="002"><span>Mechanic B</span><span>ID-xxx</span><span>status</span></option>
-				<option value="003"><span>Mechanic C</span><span>ID-xxx</span><span>status</span></option>
-				<option value="004"><span>Mechanic D</span><span>ID-xxx</span><span>status</span></option>
-				<option value="005"><span>Mechanic E</span><span>ID-xxx</span><span>status</span></option> -->
 			</select>
-			<?php /*
-				foreach ($mechanicsData as $row) {  ?>
-				<input type="hidden" name="" value="<?php echo $row['car_booked'] ?>">
-			<?php } */?>
 			<br>
 			<label class="appointment-label" for="appoinment-date">Appoinment Date : </label>
 			<input required class="appoinment-input dateBox" type="date" name="appintment-date">

@@ -13,8 +13,7 @@
 
 			if ($row= $check_credential_result->fetch_assoc()) {
 				
-				// echo '<script>alert("Logged In")</script>';
-				// $_SESSION['id'] = $row['admin_id'];
+			
 				$_SESSION['email'] = $_POST['admin-email']; 
 				$_SESSION['isLogin'] = true; 
 				$isLogin = true;
@@ -55,13 +54,7 @@
 		<form action="<?php htmlentities($_SERVER['PHP_SELF']);?>" method="POST">
 			<input required class="appoinment-input admin-modal-input" type="text" name="admin-email" placeholder="Your Email">
 			<input required class="appoinment-input admin-modal-input" type="text" name="password" placeholder="Password">
-			<!-- <input required class="appoinment-input" type="tel" name="phone" placeholder="Your Phone*">
-			<input required class="appoinment-input" type="text" name="license" placeholder="Driving License*">
-			<input required class="appoinment-input" type="text" name="engine" placeholder="Engine Number*"> -->
 			
-			<!-- <br> -->
-			<!-- <label class="appointment-label" for="appoinment-date">Appoinment Date : </label>
-			<input required class="appoinment-input dateBox" type="date" name="appintment-date"> -->
 			
 			<input class="submitBtn" type="submit" name="signin" value="Sign In">
 		</form>

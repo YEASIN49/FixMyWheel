@@ -44,7 +44,6 @@ if(isset($_SESSION['isLogin']) && isset($_SESSION['email'])){
 				
 				<div class="dropdown-content">
 					<div class="dropdown-items">
-						<!-- <a href="#"><span class="material-icons icons">person</span>User Log In</a> -->
 						
 						<?php 
 						
@@ -58,7 +57,6 @@ if(isset($_SESSION['isLogin']) && isset($_SESSION['email'])){
 						}
 						?>
 					</div>
-					<!-- <a href="#">Link 3</a> -->
 				</div>
 			</div> 
 		</div>	

@@ -1,7 +1,6 @@
 <?php 
 
 session_start();
-// $isLogin = false;
 
 include("includes/config.php");
 // echo json_encode($isLogin);
@@ -40,17 +39,11 @@ include("includes/config.php");
 	<script>
 		let burgerBtnHolder = document.querySelector(".hamburgerMenu");
 		let burgerContentToggler = document.querySelector(".navMenuContainer");
-		// let burgerContentToggler = document.querySelector("#nav-toggler");
 
-		burgerBtnHolder.addEventListener('click',()=>{
-			// if(burgerContentToggler.style.transform === "translate"){
-				// console.log(getComputedStyle(burgerContentToggler));
-				if(document.querySelector("#nav-toggler") != null){
-					burgerContentToggler.classList.toggle("toggleNavMenu");
-				}
-				// }else{
-				// burgerContentToggler.style.display = "block";
-			// }
+		burgerBtnHolder.addEventListener('click',()=>{	
+			if(document.querySelector("#nav-toggler") != null){
+				burgerContentToggler.classList.toggle("toggleNavMenu");
+			}
 		});
 
 	</script>

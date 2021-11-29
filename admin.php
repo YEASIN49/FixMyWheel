@@ -12,7 +12,6 @@
 		$allAppointments;
 		$allMechanics;
 	
-		// $fetchAppointments = "SELECT `id`, `name`, `address`, `phone`, `license_no`, `engine_no`, `mechanic_id`, `appointment_date` FROM `appointments`";
 		$fetchAppointments = "SELECT appointments.id, appointments.name, appointments.phone, appointments.license_no, appointments.engine_no, appointments.appointment_date, appointments.mechanic_id, mechanics.mechanic_name, mechanics.car_booked FROM appointments INNER JOIN mechanics ON mechanics.mechanic_id=appointments.mechanic_id
 		ORDER BY appointments.id";
 		$fetchMechanics = "SELECT `mechanic_id`, mechanic_name, `car_booked` FROM `mechanics`";
@@ -43,14 +42,7 @@
 			$updateDate=$conn->query($updateQuery);
 			if ($updateDate) {
 				fetchUpdatedAppointments();
-	
 				echo '<script>alert("Appointment date successfull updated")</script>';
-				
-				// echo '<script>location.replace("postedJob.php")</script>';
-				// sleep(2);
-				// header("location:appliedJob.php"); 
-				// die('');
-				// exit();
 			}else{
 				echo '<script>alert("Appointment date update Failed")</script>';
 			}
@@ -67,20 +59,23 @@
 			$previous_mechanicID = $_POST['previous-mechanic-id'];
 			$previous_mechanic_booking_count = $_POST['previous-mechanic-booking-count'];
 			$prevMechanic_updated_car_count = $previous_mechanic_booking_count-1;
-			// echo '<script>alert("Yes");</script>';
+
+			// SQL Query
 			$updateMechanicQuery = "UPDATE `appointments` SET `mechanic_id` = '$newID' WHERE `appointments`.`id` = $rowID";
 			$updateBookingCountQuery = "UPDATE `mechanics` SET `car_booked` = '$newID_new_car_count' WHERE `mechanics`.`mechanic_id` = $newID ";
 			$removePreviousBookingQuery = "UPDATE `mechanics` SET `car_booked` = '$prevMechanic_updated_car_count' WHERE `mechanics`.`mechanic_id` = $previous_mechanicID";
 			
+			// Query Execution
 			$updateID=$conn->query($updateMechanicQuery);
 			$updateAddedBookingCount=$conn->query($updateBookingCountQuery);
 			$updateRemovedBookingCount=$conn->query($removePreviousBookingQuery);
 
 			if ($updateRemovedBookingCount) {
-				// fetchUpdatedMechanics();
+	
 				fetchUpdatedAppointments();
 				fetchUpdatedMechanics();
 				// header("Refresh:0");
+
 				echo '<script>alert("Mechanic successfull updated")</script>';
 				// echo '<script>location.replace("postedJob.php")</script>';
 				// sleep(2);
