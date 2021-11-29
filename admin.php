@@ -13,7 +13,7 @@
 		$allMechanics;
 	
 		// $fetchAppointments = "SELECT `id`, `name`, `address`, `phone`, `license_no`, `engine_no`, `mechanic_id`, `appointment_date` FROM `appointments`";
-		$fetchAppointments = "SELECT appointments.id, appointments.name, appointments.phone, appointments.license_no, appointments.engine_no, appointments.appointment_date, appointments.mechanic_id, mechanics.mechanic_name FROM appointments INNER JOIN mechanics ON mechanics.mechanic_id=appointments.mechanic_id
+		$fetchAppointments = "SELECT appointments.id, appointments.name, appointments.phone, appointments.license_no, appointments.engine_no, appointments.appointment_date, appointments.mechanic_id, mechanics.mechanic_name, mechanics.car_booked FROM appointments INNER JOIN mechanics ON mechanics.mechanic_id=appointments.mechanic_id
 		ORDER BY appointments.id";
 		$fetchMechanics = "SELECT `mechanic_id`, mechanic_name, `car_booked` FROM `mechanics`";
 		
@@ -56,14 +56,31 @@
 			}
 		}
 		if(isset($_POST['changeMechanic'])){
-			$newID = $_POST['newID'];
+
+			$form_mechanicID_slot_string = $_POST['newMechanic'];
+			$form_mechanicID_slot_array = explode(" ",$form_mechanicID_slot_string);
+
+			$newID = $form_mechanicID_slot_array[0];
+			$newID_current_booking_count = $form_mechanicID_slot_array[1];
+			$newID_new_car_count = $newID_current_booking_count+1;
 			$rowID = $_POST['rowID-to-update'];
+			$previous_mechanicID = $_POST['previous-mechanic-id'];
+			$previous_mechanic_booking_count = $_POST['previous-mechanic-booking-count'];
+			$prevMechanic_updated_car_count = $previous_mechanic_booking_count-1;
 			// echo '<script>alert("Yes");</script>';
 			$updateMechanicQuery = "UPDATE `appointments` SET `mechanic_id` = '$newID' WHERE `appointments`.`id` = $rowID";
+			$updateBookingCountQuery = "UPDATE `mechanics` SET `car_booked` = '$newID_new_car_count' WHERE `mechanics`.`mechanic_id` = $newID ";
+			$removePreviousBookingQuery = "UPDATE `mechanics` SET `car_booked` = '$prevMechanic_updated_car_count' WHERE `mechanics`.`mechanic_id` = $previous_mechanicID";
+			
 			$updateID=$conn->query($updateMechanicQuery);
-			if ($updateID) {
+			$updateAddedBookingCount=$conn->query($updateBookingCountQuery);
+			$updateRemovedBookingCount=$conn->query($removePreviousBookingQuery);
+
+			if ($updateRemovedBookingCount) {
+				// fetchUpdatedMechanics();
+				fetchUpdatedAppointments();
 				fetchUpdatedMechanics();
-				header("Refresh:0");
+				// header("Refresh:0");
 				echo '<script>alert("Mechanic successfull updated")</script>';
 				// echo '<script>location.replace("postedJob.php")</script>';
 				// sleep(2);
@@ -138,15 +155,18 @@
 								</form>
 							</td>
 							<td class="update-cell"><?php echo $row['mechanic_name'] ?>
+								
 								<button class="submitBtn updateBtn input-toggler" onClick='openEditField(event)'>Edit</button>
 								<form class="edit-form display-hidden" action="" method="POST">
+									<input hidden type="number" name="previous-mechanic-id" value="<?php echo $row['mechanic_id'] ?>">
+									<input hidden type="number" name="previous-mechanic-booking-count" value="<?php echo $row['car_booked'] ?>">
 									<input type="hidden" name="rowID-to-update" value="<?php echo $row['id'] ?>">
 									<!--  -->
 									
-									<select class="update-field" name="newID" id="">
+									<select class="update-field" name="newMechanic" id="">
 										<?php foreach($allMechanics as $mechanic){ 
 											if($mechanic['car_booked'] < 4){ ?>
-												<option value="<?php echo $mechanic['mechanic_id'] ?>"><?php echo $mechanic['mechanic_name'] ?></option>
+												<option value='<?php echo $mechanic['mechanic_id']." ".$mechanic['car_booked'] ?>'><?php echo $mechanic['mechanic_name'] ?></option>
 											<?php }
 										 } ?>	
 									</select>
