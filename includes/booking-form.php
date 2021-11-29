@@ -14,7 +14,7 @@
 
 	
 
-if(isset($_POST['create'])){
+if(isset($_POST['book'])){
 
 
 	$form_mechanicID_slot_string = $_POST['mechanic'];
@@ -29,9 +29,9 @@ if(isset($_POST['create'])){
 	$appintment_date = $_POST['appintment-date'];
 	$current_slot = $form_mechanicID_slot_array[1];
 	// $user_id = '555';
-	echo $mechanic_id;
-	echo "test";
-	echo $current_slot;
+	// echo $mechanic_id;
+	// echo "test";
+	// echo $current_slot;
 	
 	
 	function insertQuery($sqlQuery){
@@ -51,6 +51,20 @@ if(isset($_POST['create'])){
 		}
 		
 	}
+	function updateMechanicCarCount($updateQuery){
+		global $conn;
+		
+		$updateCount=$conn->query($updateQuery);
+		if ($updateCount) {
+			echo '<script>alert("mechanic car count updated")</script>';
+			// echo '<script>location.replace("postedJob.php")</script>';
+			// header("location:appliedJob.php"); 
+			// die('');
+			// exit();
+		}else{
+			echo '<script>alert("mechanic car count update failed")</script>';
+		}
+	}
 
 
 	if($current_slot < 4){
@@ -69,9 +83,12 @@ if(isset($_POST['create'])){
 			}
 		}
 
-		if($shouldAppoint){
+		if($shouldAppoint){ 
+			$newCount = $current_slot+1;
 			$appoinement_query = "INSERT INTO `appointments`(`name`, `address`, `phone`, `license_no`, `engine_no`, `mechanic_id`, `appointment_date`) VALUES ('$name','$address','$phone','$license','$engine', '$mechanic_id', '$appintment_date')"; 
+			$update_car_count_query = "UPDATE `mechanics` SET `car_booked` = $newCount WHERE `mechanics`.`mechanic_id` = $mechanic_id";
 			insertQuery($appoinement_query);
+			updateMechanicCarCount($update_car_count_query);
 		}
 		else{
 			echo '<script>alert("Appointment already scheduled")</script>';
@@ -139,7 +156,7 @@ handyman
 			<label class="appointment-label" for="appoinment-date">Appoinment Date : </label>
 			<input required class="appoinment-input dateBox" type="date" name="appintment-date">
 			
-			<input class="submitBtn" type="submit" name="create" placeholder="Submit">
+			<input class="submitBtn" type="submit" name="book" placeholder="Submit">
 		</form>
 	</div>
 </section>

@@ -1,7 +1,10 @@
 <?php 
 
 session_start();
+// $isLogin = false;
+
 include("includes/config.php");
+// echo json_encode($isLogin);
 
 ?>
 
@@ -30,6 +33,8 @@ include("includes/config.php");
 	<?php include("includes/hero-header.php");?>
 	<?php include("includes/booking-form.php");?>
 	<?php include("includes/mechanic-list.php");?>
+	<!-- Less preferred filed -->
+	<?php include("login_admin.php")?>
 
 
 	<script>
@@ -49,6 +54,7 @@ include("includes/config.php");
 		});
 
 	</script>
+	
 
 </body>
 </html>

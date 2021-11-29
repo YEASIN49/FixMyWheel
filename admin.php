@@ -3,71 +3,79 @@
 	session_start();
 	include("includes/config.php");
 
-	$allAppointments;
-	$allMechanics;
-
-	// $fetchAppointments = "SELECT `id`, `name`, `address`, `phone`, `license_no`, `engine_no`, `mechanic_id`, `appointment_date` FROM `appointments`";
-	$fetchAppointments = "SELECT appointments.id, appointments.name, appointments.phone, appointments.license_no, appointments.engine_no, appointments.appointment_date, appointments.mechanic_id, mechanics.mechanic_name FROM appointments INNER JOIN mechanics ON mechanics.mechanic_id=appointments.mechanic_id
-	ORDER BY appointments.id";
-	$fetchMechanics = "SELECT `mechanic_id`, mechanic_name, `car_booked` FROM `mechanics`";
+	if(!isset($_SESSION['email']) or $_SESSION['isLogin'] != true){
+		die('<script>alert("Please log in as an Admin first");
+				location.replace("index.php");
+		</script>');
+	}
+	else{
+		$allAppointments;
+		$allMechanics;
 	
-	function fetchUpdatedAppointments(){
-		global $conn;
-		global $fetchAppointments;
-		global $allAppointments;
-		$allAppointments=$conn->query($fetchAppointments) or die('<script>alert("Appointment List Fetching failed!");</script>');
-	}
-	function fetchUpdatedMechanics(){
-		global $conn;
-		global $fetchMechanics;
-		global $allMechanics;
-		$allMechanics=$conn->query($fetchMechanics) or die('<script>alert("Mechanics List Fetching failed!");</script>');
-		// echo '<script>alert("mechanics updated")</script>';
-	}
-
-	fetchUpdatedAppointments();
-	fetchUpdatedMechanics();
-
-
-	if(isset($_POST['changeAppointment'])){
-		$newDate = $_POST['appointment-date'];
-		$rowID = $_POST['rowID-to-update'];
-		// echo '<script>alert("Yes");</script>';
-		$updateQuery = "UPDATE `appointments` SET `appointment_date` = '$newDate' WHERE `appointments`.`id` = $rowID";
-		$updateDate=$conn->query($updateQuery);
-		if ($updateDate) {
-			fetchUpdatedAppointments();
-
-			echo '<script>alert("Appointment date successfull updated")</script>';
-			
-			// echo '<script>location.replace("postedJob.php")</script>';
-			// sleep(2);
-			// header("location:appliedJob.php"); 
-			// die('');
-			// exit();
-		}else{
-			echo '<script>alert("Appointment date update Failed")</script>';
+		// $fetchAppointments = "SELECT `id`, `name`, `address`, `phone`, `license_no`, `engine_no`, `mechanic_id`, `appointment_date` FROM `appointments`";
+		$fetchAppointments = "SELECT appointments.id, appointments.name, appointments.phone, appointments.license_no, appointments.engine_no, appointments.appointment_date, appointments.mechanic_id, mechanics.mechanic_name FROM appointments INNER JOIN mechanics ON mechanics.mechanic_id=appointments.mechanic_id
+		ORDER BY appointments.id";
+		$fetchMechanics = "SELECT `mechanic_id`, mechanic_name, `car_booked` FROM `mechanics`";
+		
+		function fetchUpdatedAppointments(){
+			global $conn;
+			global $fetchAppointments;
+			global $allAppointments;
+			$allAppointments=$conn->query($fetchAppointments) or die('<script>alert("Appointment List Fetching failed!");</script>');
+		}
+		function fetchUpdatedMechanics(){
+			global $conn;
+			global $fetchMechanics;
+			global $allMechanics;
+			$allMechanics=$conn->query($fetchMechanics) or die('<script>alert("Mechanics List Fetching failed!");</script>');
+			// echo '<script>alert("mechanics updated")</script>';
+		}
+	
+		fetchUpdatedAppointments();
+		fetchUpdatedMechanics();
+	
+	
+		if(isset($_POST['changeAppointment'])){
+			$newDate = $_POST['appointment-date'];
+			$rowID = $_POST['rowID-to-update'];
+			// echo '<script>alert("Yes");</script>';
+			$updateQuery = "UPDATE `appointments` SET `appointment_date` = '$newDate' WHERE `appointments`.`id` = $rowID";
+			$updateDate=$conn->query($updateQuery);
+			if ($updateDate) {
+				fetchUpdatedAppointments();
+	
+				echo '<script>alert("Appointment date successfull updated")</script>';
+				
+				// echo '<script>location.replace("postedJob.php")</script>';
+				// sleep(2);
+				// header("location:appliedJob.php"); 
+				// die('');
+				// exit();
+			}else{
+				echo '<script>alert("Appointment date update Failed")</script>';
+			}
+		}
+		if(isset($_POST['changeMechanic'])){
+			$newID = $_POST['newID'];
+			$rowID = $_POST['rowID-to-update'];
+			// echo '<script>alert("Yes");</script>';
+			$updateMechanicQuery = "UPDATE `appointments` SET `mechanic_id` = '$newID' WHERE `appointments`.`id` = $rowID";
+			$updateID=$conn->query($updateMechanicQuery);
+			if ($updateID) {
+				fetchUpdatedMechanics();
+				header("Refresh:0");
+				echo '<script>alert("Mechanic successfull updated")</script>';
+				// echo '<script>location.replace("postedJob.php")</script>';
+				// sleep(2);
+				// header("location:appliedJob.php"); 
+				// die('');
+				// exit();
+			}else{
+				echo '<script>alert("Mechanic update Failed")</script>';
+			}
 		}
 	}
-	if(isset($_POST['changeMechanic'])){
-		$newID = $_POST['newID'];
-		$rowID = $_POST['rowID-to-update'];
-		// echo '<script>alert("Yes");</script>';
-		$updateMechanicQuery = "UPDATE `appointments` SET `mechanic_id` = '$newID' WHERE `appointments`.`id` = $rowID";
-		$updateID=$conn->query($updateMechanicQuery);
-		if ($updateID) {
-			fetchUpdatedMechanics();
-			header("Refresh:0");
-			echo '<script>alert("Mechanic successfull updated")</script>';
-			// echo '<script>location.replace("postedJob.php")</script>';
-			// sleep(2);
-			// header("location:appliedJob.php"); 
-			// die('');
-			// exit();
-		}else{
-			echo '<script>alert("Mechanic update Failed")</script>';
-		}
-	}
+
 
 ?>
 
