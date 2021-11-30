@@ -622,9 +622,11 @@ tbody td{
   transform: translate(-50%,-50%);
   background-color: #E9F0F8;
   margin: 0;
+  padding-top: 3px;
+  padding-right: 2px;
 }
 .updateBtn{
-  display: inline-block;
+  display: block;
   margin: 0 auto;
   /* margin-left: -5px; */
   /* padding: 5px; */
@@ -645,6 +647,7 @@ tbody td{
   display: block;
 }
 .update-field{
+  display: block;
   width: 130px;
   border: 1px solid #072c40 ; 
   color: #072c40d8;
